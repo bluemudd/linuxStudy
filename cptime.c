@@ -6,7 +6,7 @@
 #include <utime.h>
 
 int main (int argc, char * argv[]){
-{
+
 
 	if(argc < 3){
 		fprintf(stderr, "usage: %s file1 file2\n", argv[0]);
@@ -23,21 +23,6 @@ int main (int argc, char * argv[]){
 	struct utimbuf time;
 	time.actime = buf.st_atime;
 	time.modtime = buf.st_mtime;
-
-
-	if(argc < 3){
-		fprintf(stderr
-		exit(1);
-	}
-
-	struct stat buf;
-	if(stat(argv[1], &buf) < 0){
-		perror("stat()");
-		exit(-1);
-	}
-
-	sturct utimbuf time;
-	time.actime = buf.st_atime;
 
 	if(utime(argv[2], &time)){
 		perror("utime");
